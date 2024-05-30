@@ -1,10 +1,12 @@
 import UserService from "./services/user.service.js";
 import EmailService from "./services/email.service.js";
+import AuthService from "./services/auth.service.js";
 
 async function startApp() {
   // Start services
   await UserService.start();
   await EmailService.start();
+  await AuthService.start();
 
   try {
     // Simulate user creation
@@ -31,6 +33,8 @@ async function startApp() {
     console.log("Users found:", users);
 
     // ===============END USER==================
+
+    // ===============BEGIN EMAIL==================
     const emailResult = await EmailService.call("email.sendEmail", {
       recipient: newUser.email,
       subject: "Welcome to our platform",
@@ -38,11 +42,31 @@ async function startApp() {
     });
 
     console.log(emailResult);
+
+    //================END EMAIL=================
+
+    //================BEGIN AUTH=================
+    let authResult;
+
+    // Simulate successful auth
+    authResult = await AuthService.call("auth.authUser", {
+      username: "admin",
+      password: "password",
+    });
+    console.log(authResult);
+
+    // Simulate failed auth
+    authResult = await AuthService.call("auth.authUser", {
+      username: "josemokeni",
+      password: "josemokeni",
+    });
+    console.log(authResult);
   } catch (error) {
     console.error("An error occured:", error);
   } finally {
     UserService.stop();
     EmailService.stop();
+    AuthService.stop();
   }
 }
 
