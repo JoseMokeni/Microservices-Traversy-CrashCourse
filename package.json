@@ -1,0 +1,25 @@
+{
+  "name": "microservices-molecular-traversy-crashcourse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseMokeni/Microservices-Traversy-CrashCourse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoseMokeni/Microservices-Traversy-CrashCourse/issues"
+  },
+  "homepage": "https://github.com/JoseMokeni/Microservices-Traversy-CrashCourse#readme",
+  "dependencies": {
+    "moleculer": "^0.14.33"
+  }
+}
